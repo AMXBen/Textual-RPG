@@ -2,6 +2,7 @@ from random import*
 
 print("Bienvenue dans votre dernière demeure, fier combattant. Croyez-vous être à la hauteur ? Pensez-vous être capable de survivre à mon arène de la mort ? C'est ce que nous verrons. Voici votre premier adversaire. Bonne chance.")
 
+DPS_Héros=""
 fight=1
 Classe=int(input ("Quelle classe souhaitez-vous choisir ? 1=Guerrier, 2=Chasseur/Huntard, 3=Paladin, 4=Voleur, 5=Mage"))
 critique=randint(1,6)
@@ -87,8 +88,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
         DPS_Sword=randint(8,13)
         DPS_Dague=randint(4,9)
         DPS_Bow=randint(10,15)
-        DPS_Marteau=(7,12)
+        DPS_Marteau=randint(7,12)
         DPS_Ping=randint(5,10)
+        if Classe==1:
+            DPS_Héros=DPS_Sword
+        elif Classe==2:
+            DPS_Héros=DPS_Bow
+        elif Classe==3:
+            DPS_Héros=DPS_Marteau
+        elif Classe==4:
+            DPS_Héros=DPS_Dague
+        elif Classe==5:
+            DPS_Héros=DPS_Ping
         Maana_Pot=randint(1,4)
         DPS_Gob=randint(1,6)
         DPS_Orc=randint(5,10)
@@ -154,8 +165,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                     DPS_Sword=randint(8,13)
                     DPS_Dague=randint(4,9)
                     DPS_Bow=randint(10,15)
-                    DPS_Marteau=(7,12)
+                    DPS_Marteau=randint(7,12)
                     DPS_Ping=randint(5,10)
+                    if Classe==1:
+                        DPS_Héros=DPS_Sword
+                    elif Classe==2:
+                        DPS_Héros=DPS_Bow
+                    elif Classe==3:
+                        DPS_Héros=DPS_Marteau
+                    elif Classe==4:
+                        DPS_Héros=DPS_Dague
+                    elif Classe==5:
+                        DPS_Héros=DPS_Ping
                     Maana_Pot=randint(1,4)
                     DPS_Gob=randint(1,6)
                     DPS_Orc=randint(5,10)
@@ -185,8 +206,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                         DPS_Sword=randint(8,13)
                         DPS_Dague=randint(4,9)
                         DPS_Bow=randint(10,15)
-                        DPS_Marteau=(7,12)
+                        DPS_Marteau=randint(7,12)
                         DPS_Ping=randint(5,10)
+                        if Classe==1:
+                            DPS_Héros=DPS_Sword
+                        elif Classe==2:
+                            DPS_Héros=DPS_Bow
+                        elif Classe==3:
+                            DPS_Héros=DPS_Marteau
+                        elif Classe==4:
+                            DPS_Héros=DPS_Dague
+                        elif Classe==5:
+                            DPS_Héros=DPS_Ping
                         Maana_Pot=randint(1,4)
                         DPS_Gob=randint(1,6)
                         DPS_Orc=randint(5,10)
@@ -207,8 +238,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                         DPS_Sword=randint(8,13)
                         DPS_Dague=randint(4,9)
                         DPS_Bow=randint(10,15)
-                        DPS_Marteau=(7,12)
+                        DPS_Marteau=randint(7,12)
                         DPS_Ping=randint(5,10)
+                        if Classe==1:
+                            DPS_Héros=DPS_Sword
+                        elif Classe==2:
+                            DPS_Héros=DPS_Bow
+                        elif Classe==3:
+                            DPS_Héros=DPS_Marteau
+                        elif Classe==4:
+                            DPS_Héros=DPS_Dague
+                        elif Classe==5:
+                            DPS_Héros=DPS_Ping
                         Maana_Pot=randint(1,4)
                         DPS_Gob=randint(1,6)
                         DPS_Orc=randint(5,10)
@@ -231,8 +272,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 DPS_Sword=randint(8,13)
                 DPS_Dague=randint(4,9)
                 DPS_Bow=randint(10,15)
-                DPS_Marteau=(7,12)
+                DPS_Marteau=randint(7,12)
                 DPS_Ping=randint(5,10)
+                if Classe==1:
+                    DPS_Héros=DPS_Sword
+                elif Classe==2:
+                    DPS_Héros=DPS_Bow
+                elif Classe==3:
+                    DPS_Héros=DPS_Marteau
+                elif Classe==4:
+                    DPS_Héros=DPS_Dague
+                elif Classe==5:
+                    DPS_Héros=DPS_Ping
                 Maana_Pot=randint(1,4)
                 DPS_Gob=randint(1,6)
                 DPS_Orc=randint(5,10)
@@ -298,8 +349,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
             DPS_Sword=randint(8,13)
             DPS_Dague=randint(4,9)
             DPS_Bow=randint(10,15)
-            DPS_Marteau=(7,12)
+            DPS_Marteau=randint(7,12)
             DPS_Ping=randint(5,10)
+            if Classe==1:
+                DPS_Héros=DPS_Sword
+            elif Classe==2:
+                DPS_Héros=DPS_Bow
+            elif Classe==3:
+                DPS_Héros=DPS_Marteau
+            elif Classe==4:
+                DPS_Héros=DPS_Dague
+            elif Classe==5:
+                DPS_Héros=DPS_Ping
             Maana_Pot=randint(1,4)
             DPS_Gob=randint(1,6)
             DPS_Orc=randint(5,10)
@@ -321,8 +382,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 DPS_Sword=randint(8,13)
                 DPS_Dague=randint(4,9)
                 DPS_Bow=randint(10,15)
-                DPS_Marteau=(7,12)
+                DPS_Marteau=randint(7,12)
                 DPS_Ping=randint(5,10)
+                if Classe==1:
+                    DPS_Héros=DPS_Sword
+                elif Classe==2:
+                    DPS_Héros=DPS_Bow
+                elif Classe==3:
+                    DPS_Héros=DPS_Marteau
+                elif Classe==4:
+                    DPS_Héros=DPS_Dague
+                elif Classe==5:
+                    DPS_Héros=DPS_Ping
                 Maana_Pot=randint(1,4)
                 DPS_Gob=randint(1,6)
                 DPS_Orc=randint(5,10)
@@ -341,7 +412,20 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 print("Votre bouclier magique absorbe l'attaque.")
                 Maana_Héros=Maana_Héros+1
                 DPS_Sword=randint(8,13)
-                DPS_BDF=randint(10,25)
+                DPS_Dague=randint(4,9)
+                DPS_Bow=randint(10,15)
+                DPS_Marteau=randint(7,12)
+                DPS_Ping=randint(5,10)
+                if Classe==1:
+                    DPS_Héros=DPS_Sword
+                elif Classe==2:
+                    DPS_Héros=DPS_Bow
+                elif Classe==3:
+                    DPS_Héros=DPS_Marteau
+                elif Classe==4:
+                    DPS_Héros=DPS_Dague
+                elif Classe==5:
+                    DPS_Héros=DPS_Ping
                 Maana_Pot=randint(1,4)
                 DPS_Gob=randint(1,6)
                 DPS_Orc=randint(5,10)
@@ -362,8 +446,18 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 DPS_Sword=randint(8,13)
                 DPS_Dague=randint(4,9)
                 DPS_Bow=randint(10,15)
-                DPS_Marteau=(7,12)
+                DPS_Marteau=randint(7,12)
                 DPS_Ping=randint(5,10)
+                if Classe==1:
+                    DPS_Héros=DPS_Sword
+                elif Classe==2:
+                    DPS_Héros=DPS_Bow
+                elif Classe==3:
+                    DPS_Héros=DPS_Marteau
+                elif Classe==4:
+                    DPS_Héros=DPS_Dague
+                elif Classe==5:
+                    DPS_Héros=DPS_Ping
                 Maana_Pot=randint(1,4)
                 DPS_Gob=randint(1,6)
                 DPS_Orc=randint(5,10)

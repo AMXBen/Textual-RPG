@@ -29,6 +29,8 @@ else :
     DPS_Ping=randint(5,10) #capacité 2=pyro face (35 dégâts pour 10), pas de potions de force => potion mana = mana +10
     DPS_Héros=DPS_Ping
 Maana_Héros=1
+
+
 fight=1
 critique=randint(1,6)
 Taille_monstre=randint(1,20)
@@ -63,17 +65,47 @@ elif Nom_mob=="Troll":
 else:
     DPS_mob=DPS_Drag
 
+def reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag):
+    DPS_Sword=randint(8,13)
+    DPS_Dague=randint(4,9)
+    DPS_Bow=randint(10,15)
+    DPS_Marteau=randint(7,12)
+    DPS_Ping=randint(5,10)
+    if Classe==1:
+        DPS_Héros=DPS_Sword
+    elif Classe==2:
+        DPS_Héros=DPS_Bow
+    elif Classe==3:
+        DPS_Héros=DPS_Marteau
+    elif Classe==4:
+        DPS_Héros=DPS_Dague
+    elif Classe==5:
+        DPS_Héros=DPS_Ping
+    Maana_Pot=randint(1,4)
+    DPS_Gob=randint(1,6)
+    DPS_Orc=randint(5,10)
+    DPS_Troll=randint(4,15)
+    DPS_Drag=randint(9,20)
+    if Nom_mob=="Gobelin":
+        DPS_mob=DPS_Gob
+    elif Nom_mob=="Orque":
+        DPS_mob=DPS_Orc
+    elif Nom_mob=="Troll":
+        DPS_mob=DPS_Troll
+    else:
+        DPS_mob=DPS_Drag
+
 while PV_mob>0 and fight==1 and PV_Héros>0 :
     if Nom_mob=="Orque" :
         CombatX=print("L'", Nom_mob,"a",PV_mob,"PV. Vous avez ",Maana_Héros,"Maana et",PV_Héros,"PV. Que souhaitez-vous faire ?")
     else :
         CombatX=print("Le", Nom_mob,"a",PV_mob,"PV. Vous avez ",Maana_Héros,"Maana et",PV_Héros,"PV. Que souhaitez-vous faire ?")
     if Classe==1:
-        Combatx=input ("Quelle sera votre action ? 1=Coup d'épée, 2=Lever de bouclier (2 Maana), 3=Potions (le guerrier n'en a pas), 4=Parade.")
+        Combatx=input ("Quelle sera votre action ? 1=Coup d'épée, 2=Lever de bouclier (5 Maana), 3=Potions (le guerrier n'en a pas), 4=Parade.")
     elif Classe==2:
         Combatx=input ("Quelle sera votre action ? 1=Aller face, 2=Tir mortel (4 Maana), 3=Soins, 4=Esquive.")
     elif Classe==3:
-        Combatx=input ("Quelle sera votre action ? 1=Coup de marteau, 2=?, 3=Potions, 4=Parade.")
+        Combatx=input ("Quelle sera votre action ? 1=Coup de marteau, 2=Imposition des mains, 3=Potions, 4=Parade.")
     elif Classe==4:
         Combatx=input ("Quelle sera votre action ? 1=Coup de dague, 2=camouflage, 3=Potions, 4=Parade.")
     else :
@@ -85,39 +117,13 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
         print("Vous infligez",DPS_Héros,"dégâts.")
         PV_Héros=PV_Héros-DPS_mob
         print("Le",Nom_mob,"vous inflige",DPS_mob,"dégâts.")
-        DPS_Sword=randint(8,13)
-        DPS_Dague=randint(4,9)
-        DPS_Bow=randint(10,15)
-        DPS_Marteau=randint(7,12)
-        DPS_Ping=randint(5,10)
-        if Classe==1:
-            DPS_Héros=DPS_Sword
-        elif Classe==2:
-            DPS_Héros=DPS_Bow
-        elif Classe==3:
-            DPS_Héros=DPS_Marteau
-        elif Classe==4:
-            DPS_Héros=DPS_Dague
-        elif Classe==5:
-            DPS_Héros=DPS_Ping
-        Maana_Pot=randint(1,4)
-        DPS_Gob=randint(1,6)
-        DPS_Orc=randint(5,10)
-        DPS_Troll=randint(4,15)
-        DPS_Drag=randint(9,20)
-        if Nom_mob=="Gobelin":
-            DPS_mob=DPS_Gob
-        elif Nom_mob=="Orque":
-            DPS_mob=DPS_Orc
-        elif Nom_mob=="Troll":
-            DPS_mob=DPS_Troll
-        else:
-            DPS_mob=DPS_Drag
+        reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+
     elif int(Combatx)==2:
         if Classe==1:
             if Maana_Héros>=2:
                 PV_Héros=PV_Héros+10
-                Maana_Héros=Maana_Héros-1
+                Maana_Héros=Maana_Héros-4
                 print ("Votre armure vous rend plus résistant.")
             else:
                 print("Vous n'êtes pas encore prêt.")
@@ -162,34 +168,8 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                     print("Vous infligez",DPS_Héros,"dégâts.")
                     PV_Héros=PV_Héros-DPS_mob
                     print("Le",Nom_mob,"vous inflige",DPS_mob,"dégâts.")
-                    DPS_Sword=randint(8,13)
-                    DPS_Dague=randint(4,9)
-                    DPS_Bow=randint(10,15)
-                    DPS_Marteau=randint(7,12)
-                    DPS_Ping=randint(5,10)
-                    if Classe==1:
-                        DPS_Héros=DPS_Sword
-                    elif Classe==2:
-                        DPS_Héros=DPS_Bow
-                    elif Classe==3:
-                        DPS_Héros=DPS_Marteau
-                    elif Classe==4:
-                        DPS_Héros=DPS_Dague
-                    elif Classe==5:
-                        DPS_Héros=DPS_Ping
-                    Maana_Pot=randint(1,4)
-                    DPS_Gob=randint(1,6)
-                    DPS_Orc=randint(5,10)
-                    DPS_Troll=randint(4,15)
-                    DPS_Drag=randint(9,20)
-                    if Nom_mob=="Gobelin":
-                        DPS_mob=DPS_Gob
-                    elif Nom_mob=="Orque":
-                        DPS_mob=DPS_Orc
-                    elif Nom_mob=="Troll":
-                        DPS_mob=DPS_Troll
-                    else:
-                        DPS_mob=DPS_Drag
+                    reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+
                  elif int(Combatx)==2:
                     if Maana_Héros>=5:
                         PV_Héros=PV_Héros+10
@@ -197,106 +177,26 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                         print ("Votre armure vous rend plus résistant.")
                     else:
                         print("Vous n'êtes pas assez énervé.")
+
                  elif int(Combatx)==4:
                     luck=randint(1,100)
                     if luck>=95:
                         PV_Héros=PV_Héros-critique
                         print("Vous tentez de parrer l'attaque, mais cette attaque critique vous inflige quand même",critique,"dégâts.")
                         Maana_Héros=Maana_Héros+1
-                        DPS_Sword=randint(8,13)
-                        DPS_Dague=randint(4,9)
-                        DPS_Bow=randint(10,15)
-                        DPS_Marteau=randint(7,12)
-                        DPS_Ping=randint(5,10)
-                        if Classe==1:
-                            DPS_Héros=DPS_Sword
-                        elif Classe==2:
-                            DPS_Héros=DPS_Bow
-                        elif Classe==3:
-                            DPS_Héros=DPS_Marteau
-                        elif Classe==4:
-                            DPS_Héros=DPS_Dague
-                        elif Classe==5:
-                            DPS_Héros=DPS_Ping
-                        Maana_Pot=randint(1,4)
-                        DPS_Gob=randint(1,6)
-                        DPS_Orc=randint(5,10)
-                        DPS_Troll=randint(4,15)
-                        DPS_Drag=randint(9,20)
-                        if Nom_mob=="Gobelin":
-                            DPS_mob=DPS_Gob
-                        elif Nom_mob=="Orque":
-                            DPS_mob=DPS_Orc
-                        elif Nom_mob=="Troll":
-                            DPS_mob=DPS_Troll
-                        else:
-                            DPS_mob=DPS_Drag
+                        reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
                     else :
                         PV_Héros=PV_Héros
                         print("Vous parrez l'attaque.")
                         Maana_Héros=Maana_Héros+1
-                        DPS_Sword=randint(8,13)
-                        DPS_Dague=randint(4,9)
-                        DPS_Bow=randint(10,15)
-                        DPS_Marteau=randint(7,12)
-                        DPS_Ping=randint(5,10)
-                        if Classe==1:
-                            DPS_Héros=DPS_Sword
-                        elif Classe==2:
-                            DPS_Héros=DPS_Bow
-                        elif Classe==3:
-                            DPS_Héros=DPS_Marteau
-                        elif Classe==4:
-                            DPS_Héros=DPS_Dague
-                        elif Classe==5:
-                            DPS_Héros=DPS_Ping
-                        Maana_Pot=randint(1,4)
-                        DPS_Gob=randint(1,6)
-                        DPS_Orc=randint(5,10)
-                        DPS_Troll=randint(4,15)
-                        DPS_Drag=randint(9,20)
-                        if Nom_mob=="Gobelin":
-                            DPS_mob=DPS_Gob
-                        elif Nom_mob=="Orque":
-                            DPS_mob=DPS_Orc
-                        elif Nom_mob=="Troll":
-                            DPS_mob=DPS_Troll
-                        else:
-                            DPS_mob=DPS_Drag
+                        reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
         if Classe==2:
             Pot=input ("Les seules potions à votre disposition sont des potions de soin. Tapez 1 pour vous soigner (3 points de Mana).")
             if int(Pot)==1 :
                 PV_Héros=PV_Héros+Heal
                 print ("Vous sentez votre force vitale vous revenir, et votre santé revenir.")
                 Maana_Héros=Maana_Héros-2
-                DPS_Sword=randint(8,13)
-                DPS_Dague=randint(4,9)
-                DPS_Bow=randint(10,15)
-                DPS_Marteau=randint(7,12)
-                DPS_Ping=randint(5,10)
-                if Classe==1:
-                    DPS_Héros=DPS_Sword
-                elif Classe==2:
-                    DPS_Héros=DPS_Bow
-                elif Classe==3:
-                    DPS_Héros=DPS_Marteau
-                elif Classe==4:
-                    DPS_Héros=DPS_Dague
-                elif Classe==5:
-                    DPS_Héros=DPS_Ping
-                Maana_Pot=randint(1,4)
-                DPS_Gob=randint(1,6)
-                DPS_Orc=randint(5,10)
-                DPS_Troll=randint(4,15)
-                DPS_Drag=randint(9,20)
-                if Nom_mob=="Gobelin":
-                    DPS_mob=DPS_Gob
-                elif Nom_mob=="Orque":
-                    DPS_mob=DPS_Orc
-                elif Nom_mob=="Troll":
-                    DPS_mob=DPS_Troll
-                else:
-                    DPS_mob=DPS_Drag
+                reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
 
         if Classe==3:
             Pot=int(input ("Vous avez le choix entre deux potions : potion de force (3 points de Mana) et potion de Mana. 1=Force, 2=Mana."))
@@ -346,131 +246,24 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
             PV_Héros=PV_Héros-critique
             print("Vous tentez de parrer l'attaque, mais cette attaque critique vous inflige quand même",critique,"dégâts.")
             Maana_Héros=Maana_Héros+1
-            DPS_Sword=randint(8,13)
-            DPS_Dague=randint(4,9)
-            DPS_Bow=randint(10,15)
-            DPS_Marteau=randint(7,12)
-            DPS_Ping=randint(5,10)
-            if Classe==1:
-                DPS_Héros=DPS_Sword
-            elif Classe==2:
-                DPS_Héros=DPS_Bow
-            elif Classe==3:
-                DPS_Héros=DPS_Marteau
-            elif Classe==4:
-                DPS_Héros=DPS_Dague
-            elif Classe==5:
-                DPS_Héros=DPS_Ping
-            Maana_Pot=randint(1,4)
-            DPS_Gob=randint(1,6)
-            DPS_Orc=randint(5,10)
-            DPS_Troll=randint(4,15)
-            DPS_Drag=randint(9,20)
-            if Nom_mob=="Gobelin":
-                DPS_mob=DPS_Gob
-            elif Nom_mob=="Orque":
-                DPS_mob=DPS_Orc
-            elif Nom_mob=="Troll":
-                DPS_mob=DPS_Troll
-            else:
-                DPS_mob=DPS_Drag
+            reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
         else :
             if Classe==2:
                 PV_Héros=PV_Héros
                 print("Vous esquivez l'attaque.")
                 Maana_Héros=Maana_Héros+1
-                DPS_Sword=randint(8,13)
-                DPS_Dague=randint(4,9)
-                DPS_Bow=randint(10,15)
-                DPS_Marteau=randint(7,12)
-                DPS_Ping=randint(5,10)
-                if Classe==1:
-                    DPS_Héros=DPS_Sword
-                elif Classe==2:
-                    DPS_Héros=DPS_Bow
-                elif Classe==3:
-                    DPS_Héros=DPS_Marteau
-                elif Classe==4:
-                    DPS_Héros=DPS_Dague
-                elif Classe==5:
-                    DPS_Héros=DPS_Ping
-                Maana_Pot=randint(1,4)
-                DPS_Gob=randint(1,6)
-                DPS_Orc=randint(5,10)
-                DPS_Troll=randint(4,15)
-                DPS_Drag=randint(9,20)
-                if Nom_mob=="Gobelin":
-                    DPS_mob=DPS_Gob
-                elif Nom_mob=="Orque":
-                    DPS_mob=DPS_Orc
-                elif Nom_mob=="Troll":
-                    DPS_mob=DPS_Troll
-                else:
-                    DPS_mob=DPS_Drag
+                reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+
             elif Classe==5:
                 PV_Héros=PV_Héros
                 print("Votre bouclier magique absorbe l'attaque.")
                 Maana_Héros=Maana_Héros+1
-                DPS_Sword=randint(8,13)
-                DPS_Dague=randint(4,9)
-                DPS_Bow=randint(10,15)
-                DPS_Marteau=randint(7,12)
-                DPS_Ping=randint(5,10)
-                if Classe==1:
-                    DPS_Héros=DPS_Sword
-                elif Classe==2:
-                    DPS_Héros=DPS_Bow
-                elif Classe==3:
-                    DPS_Héros=DPS_Marteau
-                elif Classe==4:
-                    DPS_Héros=DPS_Dague
-                elif Classe==5:
-                    DPS_Héros=DPS_Ping
-                Maana_Pot=randint(1,4)
-                DPS_Gob=randint(1,6)
-                DPS_Orc=randint(5,10)
-                DPS_Troll=randint(4,15)
-                DPS_Drag=randint(9,20)
-                if Nom_mob=="Gobelin":
-                    DPS_mob=DPS_Gob
-                elif Nom_mob=="Orque":
-                    DPS_mob=DPS_Orc
-                elif Nom_mob=="Troll":
-                    DPS_mob=DPS_Troll
-                else:
-                    DPS_mob=DPS_Drag
+                reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
             else :
                 PV_Héros=PV_Héros
                 print("Vous parrez l'attaque.")
                 Maana_Héros=Maana_Héros+1
-                DPS_Sword=randint(8,13)
-                DPS_Dague=randint(4,9)
-                DPS_Bow=randint(10,15)
-                DPS_Marteau=randint(7,12)
-                DPS_Ping=randint(5,10)
-                if Classe==1:
-                    DPS_Héros=DPS_Sword
-                elif Classe==2:
-                    DPS_Héros=DPS_Bow
-                elif Classe==3:
-                    DPS_Héros=DPS_Marteau
-                elif Classe==4:
-                    DPS_Héros=DPS_Dague
-                elif Classe==5:
-                    DPS_Héros=DPS_Ping
-                Maana_Pot=randint(1,4)
-                DPS_Gob=randint(1,6)
-                DPS_Orc=randint(5,10)
-                DPS_Troll=randint(4,15)
-                DPS_Drag=randint(9,20)
-                if Nom_mob=="Gobelin":
-                    DPS_mob=DPS_Gob
-                elif Nom_mob=="Orque":
-                    DPS_mob=DPS_Orc
-                elif Nom_mob=="Troll":
-                    DPS_mob=DPS_Troll
-                else:
-                    DPS_mob=DPS_Drag
+                reroll (DPS_Héros,DPS_mob,DPS_Sword,DPS_Bow,DPS_Marteau,DPS_Dague,DPS_Ping,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
 
 
     if PV_mob<=0 :

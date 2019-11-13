@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 from random import*
 
 print("Bienvenue dans votre dernière demeure, fier combattant. Croyez-vous être à la hauteur ? Pensez-vous être capable de survivre à mon arène de la mort ? C'est ce que nous verrons. Voici votre premier adversaire. Bonne chance.")

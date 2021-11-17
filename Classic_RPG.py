@@ -39,17 +39,15 @@ else :
     DPS_Drag=randint(9,20)
     Nom_mob="Dragon"
 
-def setatk():
-    if Nom_mob=="Gobelin":
-        DPS_mob=DPS_Gob
-    elif Nom_mob=="Orque":
-        DPS_mob=DPS_Orc
-    elif Nom_mob=="Troll":
-        DPS_mob=DPS_Troll
-    else:
-        DPS_mob=DPS_Drag
+if Nom_mob=="Gobelin":
+    DPS_mob=DPS_Gob
+elif Nom_mob=="Orque":
+    DPS_mob=DPS_Orc
+elif Nom_mob=="Troll":
+    DPS_mob=DPS_Troll
+else:
+    DPS_mob=DPS_Drag
 
-setatk()
 DPS_Sword=randint(5,10)
 DPS_BDF=randint(10,25)
 Maana_Pot=randint(1,4)
@@ -64,7 +62,14 @@ def reroll():
     DPS_Orc=randint(5,10)
     DPS_Troll=randint(4,15)
     DPS_Drag=randint(9,20)
-    setatk()
+    if Nom_mob=="Gobelin":
+        DPS_mob=DPS_Gob
+    elif Nom_mob=="Orque":
+        DPS_mob=DPS_Orc
+    elif Nom_mob=="Troll":
+        DPS_mob=DPS_Troll
+    else:
+        DPS_mob=DPS_Drag
 
 while PV_mob>0 and fight==1 and PV_Héros>0 :
     if Nom_mob=="Orque" :

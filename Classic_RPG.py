@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-random import*
+from random import*
 
 print("Bienvenue dans votre dernière demeure, fier combattant. Croyez-vous être à la hauteur ? Pensez-vous être capable de survivre à mon arène de la mort ? C'est ce que nous verrons. Voici votre premier adversaire. Bonne chance.")
 mob_kill=0
@@ -10,6 +10,13 @@ kill_Troll=0
 kill_Drag=0
 fight=1
 critique=randint(1,6)
+PV_Héros=(30)
+Maana_Héros=(1)
+DPS_Gob=randint(1,6)
+DPS_Orc=randint(5,10)
+DPS_Troll=randint(4,15)
+DPS_Drag=randint(9,20)
+DPS_mob=0
 Taille_monstre=randint(1,20)
 if Taille_monstre==1 or Taille_monstre==2 or Taille_monstre== 3 or Taille_monstre==4 or Taille_monstre==5 or Taille_monstre==6 or Taille_monstre==7 or Taille_monstre==8 or Taille_monstre==9 or Taille_monstre==10 :
     PV_mob=randint(10,25)
@@ -31,32 +38,8 @@ else :
     print("Vous avez eu la malchance de réveiller un dragon. Vous affrontez le boss.")
     DPS_Drag=randint(9,20)
     Nom_mob="Dragon"
-PV_Héros=(30)
-Maana_Héros=(1)
 
-if Nom_mob=="Gobelin":
-    DPS_mob=DPS_Gob
-elif Nom_mob=="Orque":
-    DPS_mob=DPS_Orc
-elif Nom_mob=="Troll":
-    DPS_mob=DPS_Troll
-else:
-    DPS_mob=DPS_Drag
-
-DPS_Sword=randint(5,10)
-DPS_BDF=randint(10,25)
-Maana_Pot=randint(1,4)
-Force_Bonus=6
-Heal=(15)
-
-def reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag):
-    DPS_Sword=randint(5,10)
-    DPS_BDF=randint(10,25)
-    Maana_Pot=randint(1,4)
-    DPS_Gob=randint(1,6)
-    DPS_Orc=randint(5,10)
-    DPS_Troll=randint(4,15)
-    DPS_Drag=randint(9,20)
+def setatk():
     if Nom_mob=="Gobelin":
         DPS_mob=DPS_Gob
     elif Nom_mob=="Orque":
@@ -65,6 +48,23 @@ def reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag):
         DPS_mob=DPS_Troll
     else:
         DPS_mob=DPS_Drag
+
+setatk()
+DPS_Sword=randint(5,10)
+DPS_BDF=randint(10,25)
+Maana_Pot=randint(1,4)
+Force_Bonus=6
+Heal=(15)
+
+def reroll():
+    DPS_Sword=randint(5,10)
+    DPS_BDF=randint(10,25)
+    Maana_Pot=randint(1,4)
+    DPS_Gob=randint(1,6)
+    DPS_Orc=randint(5,10)
+    DPS_Troll=randint(4,15)
+    DPS_Drag=randint(9,20)
+    setatk()
 
 while PV_mob>0 and fight==1 and PV_Héros>0 :
     if Nom_mob=="Orque" :
@@ -79,7 +79,7 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
         print("Vous infligez",DPS_Sword,"dégâts.")
         PV_Héros=PV_Héros-DPS_mob
         print("Le",Nom_mob,"vous inflige",DPS_mob,"dégâts.")
-        reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+        reroll()
 
     elif int(Combatx)==2 :
         if Maana_Héros>=4 :
@@ -88,7 +88,7 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
             print("Vous infligez",DPS_BDF,"dégâts.")
             PV_Héros=PV_Héros-DPS_mob
             print("Votre adversaire vous inflige",DPS_mob,"dégâts.")
-            reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+            reroll()
 
         elif Maana_Héros<4 :
             print("Vous n'avez pas assez de mana.")
@@ -99,7 +99,7 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
             Maana_Héros=Maana_Pot+Maana_Héros
             PV_Héros=PV_Héros-DPS_mob
             print("Votre adversaire vous inflige",DPS_mob,"dégâts.")
-            reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+            reroll()
 
         elif int (Pot)==2 :
             if Maana_Héros>=3:
@@ -107,14 +107,14 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 Maana_Héros=Maana_Héros-2
                 PV_Héros=PV_Héros-DPS_mob
                 print("Votre adversaire vous inflige",DPS_mob,"dégâts.")
-                reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+                reroll()
 
             else :
                 print("Vous n'avez pas assez de Maana.")
         else :
             PV_Héros=PV_Héros+Heal
             Maana_Héros=Maana_Héros-2
-            reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+            reroll()
 
     else :
         luck=randint(1,100)
@@ -122,13 +122,13 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
             PV_Héros=PV_Héros-critique
             print("Vous tentez de parrer l'attaque, mais cette attaque critique vous inflige quand même",critique,"dégâts.")
             Maana_Héros=Maana_Héros+1
-            reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+            reroll()
 
         else :
             PV_Héros=PV_Héros
             print("Vous parrez l'attaque.")
             Maana_Héros=Maana_Héros+1
-            reroll(DPS_Sword,DPS_BDF,DPS_mob,DPS_Gob,DPS_Orc,DPS_Troll,DPS_Drag)
+            reroll()
 
     if PV_mob<=0 :
         print("Bien joué. Vous avez écrasé votre ennemi.")
@@ -167,14 +167,7 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 print("Vous avez eu la malchance de réveiller un dragon. Vous affrontez le boss.")
                 DPS_Drag=randint(9,20)
                 Nom_mob="Dragon"
-            if Nom_mob=="Gobelin":
-                DPS_mob=DPS_Gob
-            elif Nom_mob=="Orque":
-                DPS_mob=DPS_Orc
-            elif Nom_mob=="Troll":
-                DPS_mob=DPS_Troll
-            else:
-                DPS_mob=DPS_Drag
+            setatk()
         else :
             fight=0
             if kill_Drag>=1 or kill_Troll>=3 or kill_Gob>=15 or kill_Orc>=7 :
@@ -210,14 +203,7 @@ while PV_mob>0 and fight==1 and PV_Héros>0 :
                 print("Vous avez eu la malchance de réveiller un dragon. Vous affrontez le boss.")
                 DPS_Drag=randint(9,20)
                 Nom_mob="Dragon"
-            if Nom_mob=="Gobelin":
-                DPS_mob=DPS_Gob
-            elif Nom_mob=="Orque":
-                DPS_mob=DPS_Orc
-            elif Nom_mob=="Troll":
-                DPS_mob=DPS_Troll
-            else:
-                DPS_mob=DPS_Drag
+            setatk()
         else :
             fight=0
             print("Revenez quand vous serez plus entraîné et plus fort.")
